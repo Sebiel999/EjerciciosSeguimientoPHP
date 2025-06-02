@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -8,26 +7,24 @@ Route::get('/', function () {
     return view('home/index');
 })->name('home.index');
 
-Route::get('/cartelera', function () {
-    return view('cinema/cartelera');
-});
+require __DIR__.'/web/tareas.php';
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+require __DIR__.'/web/propinas.php';
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+require __DIR__.'/web/contrasenagenerada.php';
 
-require __DIR__.'/auth.php';
+require __DIR__.'/web/gastos.php';
 
-include('web/department.php');
+require __DIR__.'/web/reservas.php';
 
-include('web/city.php');
+require __DIR__.'/web/notas.php';
 
-include('web/roles.php');
+require __DIR__.'/web/eventos.php';
 
-include('web/genre.php');
+require __DIR__.'/web/recetas.php';
+
+require __DIR__.'/web/memoria.php';
+
+require __DIR__.'/web/encuestas.php';
+
+require __DIR__.'/web/tiempos.php';
